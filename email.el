@@ -27,3 +27,7 @@
 	     (mu4e-drafts-folder . "/uw/Drafts")
 	     (mu4e-trash-folder  . "/uw/Trash")
 	     (mu4e-refile-folder . "/uw/Archive")))))
+
+(setq mu4e-view-use-gnus t)
+
+(setq mu4e-get-mail-command "offlineimap")
