@@ -71,6 +71,7 @@
  (doom-themes-treemacs-config))
 
 (use-package doom-modeline :ensure t
+  :init (fset 'battery-update #'ignore)
   :hook (after-init . doom-modeline-mode))
 
 (use-package which-key
