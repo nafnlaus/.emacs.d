@@ -33,7 +33,7 @@
 (use-package evil
   :init ;; tweak evil's configuration before loading it
   (setq evil-want-keybinding nil)
-  (setq evil-want-integration nil)
+  (setq evil-want-integration t)
   (setq evil-search-module 'swiper)
   (setq evil-ex-complete-emacs-commands nil)
   (setq evil-vsplit-window-right t)
