@@ -50,6 +50,8 @@
 ;; initialize packages
 (require 'init-use-package)
 (require 'init-ui)
+(require 'init-shell)
+(require 'init-dired)
 ;; (require 'init-funtions) none right now
 (load-user-file "functions.el")
 (load-user-file "")

@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-company.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: init-company.el
+;; Description: configure company-mode
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; This file comfigures company-mode
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -28,38 +28,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+(use-package company
+  :hook (prog-mode . company-mode))
 
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
-
-(use-package ivy
-  :config (ivy-mode 1))
-
-(use-package swiper)
-
-(use-package counsel
-  :config (counsel-mode 1))
-
-(use-package smartparens
-  :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
-
-
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-company)
+;;; init-company.el ends here

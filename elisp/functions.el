@@ -43,11 +43,5 @@
       (set-visited-file-name new-name)
       (set-buffer-modified-p nil))))))
 
-(defun my-c-mode-config ()
-  (setq indent-tabs-mode nil
-        tab-width        4
-        c-basic-offset   4))
-
-
 (provide 'functions)
 ;;; functions.el ends here

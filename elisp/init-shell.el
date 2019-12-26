@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-shell.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: init-shell.el
+;; Description: initialize my Emacs :)
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; This file configures the various Emacs shells
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,37 +29,14 @@
 ;;
 ;;; Code:
 
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
-
-(use-package ivy
-  :config (ivy-mode 1))
-
-(use-package swiper)
-
-(use-package counsel
-  :config (counsel-mode 1))
-
-(use-package smartparens
+(use-package shell-here
+  :bind ("M-`" . shell-here)
   :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
+  (if (eq 'system-type "gnu/linux")
+      (setq explicit-shell-file-name "/bin/bash")))
+
+;; configure multiterm
 
 
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-shell)
+;;; init-shell.el ends here

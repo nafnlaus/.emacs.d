@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-magit.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: init-magit.el
+;; Description: initialize magit and auxiliary
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; This file loads magit and related packages
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,37 +29,15 @@
 ;;
 ;;; Code:
 
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
+(use-package magit
+  :defer t)
 
-(use-package ivy
-  :config (ivy-mode 1))
+(use-package evil-magit
+  :after evil magit)
 
-(use-package swiper)
+(use-package forge
+  :defer t
+  :after magit)
 
-(use-package counsel
-  :config (counsel-mode 1))
-
-(use-package smartparens
-  :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
-
-
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-magit)
+;;; init-magit.el ends here

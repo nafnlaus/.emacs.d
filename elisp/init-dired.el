@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-dired.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: init-dired.el
+;; Description: configure dired
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; This package configures dired
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -28,38 +28,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
-
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
-
-(use-package ivy
-  :config (ivy-mode 1))
-
-(use-package swiper)
-
-(use-package counsel
-  :config (counsel-mode 1))
-
-(use-package smartparens
+(use-package dired
+  :ensure nil
+  :custom
+  ;; Always delete and copy recursively
+  (dired-recursive-deletes 'always)
+  (dired-recursive-copies 'always)
+  ;; Auto refresh Dired, but be quiet about it
+  (global-auto-revert-non-file-buffers t)
+  (auto-revert-verbose nil)
+  ;; Quickly copy/move file in Dired
+  (dired-dwim-target t)
+  ;; Move files to trash when deleting
+  (delete-by-moving-to-trash t)
   :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
+  ;; Reuse same dired buffer, to prevent numerous buffers while navigating in dired
+  (put 'dired-find-alternate-file 'disabled nil))
 
-
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-dired)
+;;; init-dired.el ends here

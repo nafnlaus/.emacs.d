@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-cc-mode.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: initcc-mode.el
+;; Description: configure cc-mode
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; This file configures cc-mode
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,37 +29,21 @@
 ;;
 ;;; Code:
 
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
-
-(use-package ivy
-  :config (ivy-mode 1))
-
-(use-package swiper)
-
-(use-package counsel
-  :config (counsel-mode 1))
-
-(use-package smartparens
+(use-package cc-mode
+  :ensure nil
   :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
+  (setq indent-tabs-mode nil
+        tab-width        4
+        c-basic-offset   4)
+  (c-set-offset 'comment-intro 0)
+  (c-set-offset 'innamespace 0)
+  (c-set-offset 'case-label '+)
+  (c-set-offset 'access-label 0)
+  (c-set-offset (quote cpp-macro) 0 nil))
 
+(use-package modern-cpp-font-lock
+  :diminish t
+  :init (modern-c++-font-lock-global-mode t))
 
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-cc-mode)
+;;; init-cc-mode.el ends here

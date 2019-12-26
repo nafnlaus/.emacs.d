@@ -1,14 +1,14 @@
-;;; packages.el --- -*- lexical-binding: t -*-
+;;; init-themes.el --- -*- lexical-binding: t -*-
 ;;
-;; Filename: packages.el
-;; Description: load and configure all packages
+;; Filename: init-themes.el
+;; Description: initialize my Emacs :)
 ;; Author: Alex de Wit
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
 ;;
-;; This file loads and configures all packages for my Emacs config
+;; Configures themeing and modeline
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -29,37 +29,23 @@
 ;;
 ;;; Code:
 
-;; ================ PROGRAMMING PACKAGES START HERE ===============
-(use-package flycheck
-  :pin melpa-stable
-  :init (global-flycheck-mode))
+(use-package all-the-icons :ensure t)
 
-(use-package ivy
-  :config (ivy-mode 1))
+(use-package doom-themes :ensure t
+ :config
+ (setq doom-themes-enable-bold t
+       doom-themes-enable-italic t)
+ (load-theme 'doom-nord t)
+ (doom-themes-visual-bell-config)
+ (doom-themes-neotree-config)
+ (doom-themes-treemacs-config))
 
-(use-package swiper)
+(use-package doom-modeline :ensure t
+  :init (fset 'battery-update #'ignore)
+  :hook (after-init . doom-modeline-mode))
 
-(use-package counsel
-  :config (counsel-mode 1))
+(use-package rainbow-delimiters :ensure t
+  :hook ('prog-mode . rainbow-delimiters-mode))
 
-(use-package smartparens
-  :config
-  (progn
-    (smartparens-global-mode)
-    (show-smartparens-global-mode t)))
-
-
-
-;; hy-mode
-(use-package elpy
-  :hook (python-mode . elpy-mode)
-  :init (elpy-enable))
-
-(setq python-shell-interpreter "python3")
-
-;; ESS
-;; Racket??
-;; Scala
-
-(provide 'packages)
-;;; packages.el ends here
+(provide 'init-themes)
+;;; init-themes.el ends here
