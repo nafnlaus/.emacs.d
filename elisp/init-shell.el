@@ -35,8 +35,8 @@
   (if (eq 'system-type "gnu/linux")
       (setq explicit-shell-file-name "/bin/bash")))
 
-;; configure multiterm
-
+;; configure multiterm/multishell
+;; (use-package multishell)
 
 (provide 'init-shell)
 ;;; init-shell.el ends here

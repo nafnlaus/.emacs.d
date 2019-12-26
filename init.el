@@ -47,41 +47,39 @@
 
 ;; ========== Load other files ====================
 
-;; initialize packages
+;;; initialize packages
+
+;; bootstrap use-package
 (require 'init-use-package)
+
+;; ui packages
+(require 'init-themes)
 (require 'init-ui)
-(require 'init-shell)
+
+;; keybinding packages
+(require 'init-evil)
+(require 'init-eyebrowse)
+
+;; misc
 (require 'init-dired)
+(require 'init-shell)
+(require 'init-ivy)
+(require 'init-magit)
+
+;; programming packages
+(require 'init-company)
+(require 'init-cc-mode)
+(require 'init-flycheck)
+(require 'init-smartparens)
+;; (require 'init-quickrun)
+
+;; custom keybinding maps
+;; (require 'init-leader-maps)
+;; (require 'init-evil-paren-state)
+
+
 ;; (require 'init-funtions) none right now
-(load-user-file "functions.el")
-(load-user-file "")
-(load-user-file "keybinds.el")
 ;; (load-user-file "email.el")
-
-;; ========== General ==================
-;; Make backups of files, even when they're in version control
-(setq vc-make-backup-files t)
-
-;; keep all backups in one place
-(make-directory "~/.emacs.d/autosaves" t)
-(make-directory "~/.emacs.d/backups" t)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups/"))
-      auto-save-file-name-transforms  '((".*" "~/.emacs.d/autosaves/\\1" t))
-      backup-by-copying t    ; Don't delink hardlinks
-      version-control t      ; Use version numbers on backups
-      delete-old-versions t  ; Automatically delete excess backups
-      kept-new-versions 20   ; how many of the newest versions to keep
-      kept-old-versions 5    ; and how many of the old
-      )
-
-;; Load the newest version of a file
-(setq load-prefer-newer t)
-
-;; Detect external file changes and auto refresh file
-(global-auto-revert-mode t)
-
-;; Transparently open compressed files
-(auto-compression-mode t)
 
 (provide 'init)
 ;;; init.el ends here
