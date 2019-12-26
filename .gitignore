@@ -1,0 +1,16 @@
+# any subdirectory
+*/
+
+# except the ones that matter
+!elisp/
+!site-elisp/
+
+# any dotfiles
+.*
+
+# except the ones that matter
+!.gitignore
+
+# misc
+tramp
+
