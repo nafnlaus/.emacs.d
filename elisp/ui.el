@@ -1,5 +1,4 @@
 ;; ========== Themes/UI ==================
-;; (load-theme 'material t) ;; load material theme
 
 ;; Toggle menu bar
 

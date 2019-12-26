@@ -29,31 +29,30 @@
 ;;
 ;;; Code:
 
-;; package.el initialization
-(require 'package)
+;; add elisp directory to load-path
+(defun update-to-load-path (folder)
+  "Update FOLDER and its subdirectories to `load-path'."
+  (let ((base folder))
+    (unless (member base load-path)
+      (add-to-list 'load-path base))
+    (dolist (f (directory-files base))
+      (let ((name (concat base "/" f)))
+        (when (and (file-directory-p name)
+                   (not (equal f ".."))
+                   (not (equal f ".")))
+          (unless (member base load-path)
+            (add-to-list 'load-path name)))))))
 
-;; Add MELPA
-(setq package-archives
-      '(("elpa"         . "https://elpa.gnu.org/packages/")
-        ("melpa-stable" . "https://stable.melpa.org/packages/")
-        ("melpa"        . "https://melpa.org/packages/"))
-      package-archive-priorities
-      '(("melpa-stable" . 0)
-        ("elpa"         . 5)
-        ("melpa"        . 10)))
-
-(package-initialize)
-
-;; all configuration should be done explicitly in this file tree
-(setq custom-file (make-temp-file ""))
-
+(update-to-load-path (expand-file-name "elisp" user-emacs-directory))
 
 ;; ========== Load other files ====================
 
+;; initialize packages
+(require 'init-use-package)
+(require 'init-ui)
+;; (require 'init-funtions) none right now
 (load-user-file "functions.el")
-(load-user-file "ui.el")
 (load-user-file "")
-(load-user-file "packages.el")
 (load-user-file "keybinds.el")
 ;; (load-user-file "email.el")
 

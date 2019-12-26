@@ -70,6 +70,8 @@
   (dired-dwim-target t)
   ;; Move files to trash when deleting
   (delete-by-moving-to-trash t)
+  ;; make dired filesizes human-readable.
+  (setq-default dired-listing-switches "-alh")
   :config
   ;; Reuse same dired buffer, to prevent numerous buffers while navigating in dired
   (put 'dired-find-alternate-file 'disabled nil))
