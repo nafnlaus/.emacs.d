@@ -47,24 +47,12 @@
 ;; all configuration should be done explicitly in this file tree
 (setq custom-file (make-temp-file ""))
 
-;; prepare to load other init files
-(defconst user-init-dir
-  (cond ((boundp 'user-emacs-directory)
-         user-emacs-directory)
-        ((boundp 'user-init-directory)
-         user-init-directory)
-        (t "~/.emacs.d/")))
-
-(defun load-user-file (file)
-  "Load a FILE in current user's configuration directory."
-  (interactive "f")
-  (load-file (expand-file-name file user-init-dir)))
-
 
 ;; ========== Load other files ====================
 
 (load-user-file "functions.el")
 (load-user-file "ui.el")
+(load-user-file "")
 (load-user-file "packages.el")
 (load-user-file "keybinds.el")
 ;; (load-user-file "email.el")
