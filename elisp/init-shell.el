@@ -36,7 +36,8 @@
       (setq explicit-shell-file-name "/bin/bash")))
 
 ;; configure multiterm/multishell
-;; (use-package multishell)
+;; write a function that renames shell buffer upon opening it so that names
+;; do not conflict
 
 (provide 'init-shell)
 ;;; init-shell.el ends here

@@ -65,6 +65,8 @@
 (require 'init-shell)
 (require 'init-ivy)
 (require 'init-magit)
+(require 'init-save)
+(require 'init-mu4e)
 
 ;; programming packages
 (require 'init-company)
@@ -79,7 +81,6 @@
 
 
 ;; (require 'init-funtions) none right now
-;; (load-user-file "email.el")
 
 (provide 'init)
 ;;; init.el ends here

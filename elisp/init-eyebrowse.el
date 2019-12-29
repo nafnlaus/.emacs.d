@@ -45,7 +45,9 @@
     "." 'eyebrowse-next-window-config
     "," 'eyebrowse-prev-window-config
     "'" 'eyebrowse-last-window-config
-    "\\" 'eyebrowse-close-window-config))
+    "\\" 'eyebrowse-close-window-config)
+  :config
+  (eyebrowse-mode))
 
 (provide 'init-eyebrowse)
 ;; init-eyebrowse.el ends here
