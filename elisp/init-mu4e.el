@@ -51,6 +51,7 @@
   (mu4e-view-show-addresses t)
   (mu4e-confirm-quit nil)
   (mu4e-use-fancy-chars t)
+  (mu4e-html2text-command "html2text --body-width=72")
   :hook
   ((mu4e-view-mode . visual-line-mode)
    (mu4e-compose-mode . (lambda () ;; make this my word proccessing mode
