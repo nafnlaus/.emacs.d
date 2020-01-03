@@ -29,6 +29,8 @@
 ;;
 ;;; Code:
 
+;; single space after periods like sane people, please!
+(setq-default sentence-end-double-space nil)
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 

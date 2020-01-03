@@ -9,7 +9,7 @@
 ;;; Commentary:
 ;;
 ;; This file configures evil-mode and auxiliary packages. It does not include
-;; any custom evil states or leader-kep maps. See init-leader-keys for that.
+;; any custom evil states or leader-key maps. See init-leader-keys for that.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -41,8 +41,6 @@
 	evil-shift-round nil
 	evil-want-C-u-scroll t)
   :config
-  (evil-set-leader 'normal " ")
-  (evil-set-leader 'normal "," t)
   (evil-mode))
 
 (use-package evil-collection
@@ -66,4 +64,4 @@
   (evil-org-agenda-set-keys))
 
 (provide 'init-evil)
-;; init-evil.el ends here
+;;; init-evil.el ends here
