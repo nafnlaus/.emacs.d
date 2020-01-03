@@ -58,7 +58,6 @@
 
 ;; keybinding packages
 (require 'init-evil)
-(require 'init-general)
 (require 'init-eyebrowse)
 
 ;; misc
