@@ -58,6 +58,7 @@
 
 ;; keybinding packages
 (require 'init-evil)
+(require 'init-general)
 (require 'init-eyebrowse)
 
 ;; misc
@@ -73,12 +74,12 @@
 (require 'init-cc-mode)
 (require 'init-flycheck)
 (require 'init-smartparens)
+(require 'init-yasnip)
 ;; (require 'init-quickrun)
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)
 ;; (require 'init-evil-paren-state)
-
 
 ;; (require 'init-funtions) none right now
 
