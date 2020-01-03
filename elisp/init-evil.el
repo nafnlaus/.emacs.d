@@ -32,15 +32,17 @@
 
 (use-package evil
   :init ;; tweak evil's configuration before loading it
-  (setq evil-want-keybinding nil)
-  (setq evil-want-integration t)
-  (setq evil-search-module 'swiper)
-  (setq evil-ex-complete-emacs-commands nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (setq evil-shift-round nil)
-  (setq evil-want-C-u-scroll t)
-  :config ;; tweak evil after loading it
+  (setq evil-want-keybinding nil
+	evil-want-integration t
+	evil-search-module 'swiper
+	evil-ex-complete-emacs-commands nil
+	evil-vsplit-window-right t
+	evil-split-window-below t
+	evil-shift-round nil
+	evil-want-C-u-scroll t)
+  :config
+  (evil-set-leader 'normal " ")
+  (evil-set-leader 'normal "," t)
   (evil-mode))
 
 (use-package evil-collection
