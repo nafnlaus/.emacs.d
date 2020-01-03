@@ -3,7 +3,7 @@
 ;; Author: Alex de Wit
 ;; Maintainer: Alex de Wit
 ;; Version: none
-;; Package-Requires: ()
+;; Package-Requires: ((cl-lib "0.5"))
 ;; Homepage: none
 ;; Keywords: keybindings
 
@@ -31,20 +31,7 @@
 
 ;;; Code:
 
-(defmacro general-with-eval-after-load (file &rest body)
-  "Like `with-eval-after-load' but don't always add to `after-load-alist'.
-When FILE has already been loaded, execute BODY immediately without adding it to
-`after-load-alist'."
-  (declare (indent 1)
-           (debug t))
-  `(if (if (stringp ,file)
-           (load-history-filename-element
-            (purecopy (load-history-regexp ,file)))
-         (featurep ,file))
-       (progn ,@body)
-     (eval-after-load ,file (lambda () ,@body))))
-
-(general-with-eval-after-load 'use-package-core
+(with-eval-after-load 'use-package-core
   (declare-function use-package-concat "use-package")
   (declare-function use-package-process-keywords "use-package")
   (defvar use-package-keywords)
@@ -61,40 +48,6 @@ When FILE has already been loaded, execute BODY immediately without adding it to
                  unless (eq item :leader)
                  collect item))
 
-  (defun general--sanitize-arglist (arglist)
-    "Remove positional/separator arguments from ARGLIST."
-    (let ((arglists (if (eq (car arglist) 'general-defs)
-                        (general--parse-defs-arglists (cdr arglist))
-                      (list arglist))))
-      (cl-loop for arglist in arglists
-               do (while (general--positional-arg-p (car arglist))
-                    (setq arglist (cdr arglist)))
-               and append arglist)))
-
-  ;; altered args will be passed to the autoloads and handler functions
-  (defun use-package-normalize/:general (_name _keyword general-arglists)
-    "Return a plist containing the original ARGLISTS and autoloadable symbols."
-    (let* ((sanitized-arglist
-            ;; combine arglists into one without function names or
-            ;; positional arguments
-            (cl-loop for arglist in general-arglists
-                     append (general--sanitize-arglist arglist)))
-           (commands
-            (cl-loop for (key def) on sanitized-arglist by 'cddr
-                     when (and (not (keywordp key))
-                               (not (null def))
-                               (ignore-errors
-                                 ;; remove extra quote
-                                 ;; `eval' works in some cases that `cadr' does
-                                 ;; not (e.g. quoted string, '(list ...), etc.)
-                                 ;; `ignore-errors' handles cases where it fails
-                                 ;; (e.g. variable not defined at
-                                 ;; macro-expansion time)
-                                 (setq def (eval def))
-                                 (setq def (general--extract-autoloadable-symbol
-                                            def))))
-                     collect def)))
-      (list :arglists general-arglists :commands commands)))
 
   (defun use-package-autoloads/:general (_name _keyword args)
     "Return an alist of commands extracted from ARGS.
@@ -108,13 +61,18 @@ Return something like '((some-command-to-autoload . command) ...)."
      (use-package-process-keywords name rest state)
      `(,@(mapcar (lambda (arglist)
                    ;; Note: prefix commands are not valid functions
+		   ;; if it is a custom definer function
                    (if (or (functionp (car arglist))
                            (macrop (car arglist)))
                        `(,@arglist :package ',name)
+		     ;; if it is a list of keybindings
                      `(general-def
                         ,@arglist
                         :package ',name)))
+		 ;; evaluate the lambda
                  (plist-get args :arglists))))))
+
+
 
 (provide 'init-leader-keys)
 ;;; init-leader-keys.el ends here
