@@ -68,13 +68,16 @@
 (require 'init-save)
 (require 'init-mu4e)
 
-;; programming packages
+;; programming utility packages
 (require 'init-company)
-(require 'init-cc-mode)
 (require 'init-flycheck)
 (require 'init-smartparens)
 (require 'init-yasnip)
 ;; (require 'init-quickrun)
+
+;; major modes
+(require 'init-cc-mode)
+(require 'init-ein)
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)
