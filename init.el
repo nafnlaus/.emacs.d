@@ -77,7 +77,8 @@
 
 ;; major modes
 (require 'init-cc-mode)
-(require 'init-ein)
+(require 'init-ess)
+;; (require 'init-ein)
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)
