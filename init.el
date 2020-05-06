@@ -77,8 +77,7 @@
 
 ;; major modes
 (require 'init-cc-mode)
-(require 'init-ess)
-;; (require 'init-ein)
+(require 'init-elpy)
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)
