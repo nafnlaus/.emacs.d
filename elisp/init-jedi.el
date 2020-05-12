@@ -1,11 +1,11 @@
-;;; init-general.el ---   -*- lexical-binding: t -*-
+:;;; init-jedi.el --- initializes jedi -*- lexical-binding: t -*-
 
-;; Author: Alex de Wit
+;; Author: Ales de Wit
 ;; Maintainer: Alex de Wit
-;; Version: 0
+;; Version: 
 ;; Package-Requires: ()
-;; Homepage: none
-;; Keywords: general, keybindings
+;; Homepage: 
+;; Keywords: 
 
 
 ;; This file is not part of GNU Emacs
@@ -26,14 +26,12 @@
 
 ;;; Commentary:
 
-;; This file initializes general.el for my Emacs 
+;; This file loads and configures jedi.
 
 ;;; Code:
 
-(use-package general
-  :config
-  (general-create-definer leader-def :prefix "SPC"))
+(use-package company-jedi)
 
-(provide 'init-general)
+(provide 'init-jedi)
 
-;;; init-general.el ends here
+;;; init-jedi.el ends here

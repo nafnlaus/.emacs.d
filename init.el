@@ -73,11 +73,13 @@
 (require 'init-flycheck)
 (require 'init-smartparens)
 (require 'init-yasnip)
+(require 'init-color-rg)
 ;; (require 'init-quickrun)
 
 ;; major modes
 (require 'init-cc-mode)
 (require 'init-elpy)
+(require 'init-jedi)
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)

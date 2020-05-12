@@ -33,8 +33,6 @@
   :load-path "/usr/share/emacs/site-lisp/mu4e/mu4e.el"
   :commands (mu4e)
   :init
-;;  (use-package mu4e-overview :defer t)
-;;  :bind ("M-z m" . mu4e)
   :custom
   (mu4e-maildir (expand-file-name "~/Maildir"))
   (mu4e-get-mail-command "mbsync -a")

@@ -31,7 +31,12 @@
 ;;; Code:
 
 (use-package elpy
-  :init (elpy-enable))
+  :init (elpy-enable)
+  :config (setq elpy-rpc-python-command "python3")
+  :general
+  ('normal elpy-mode-map
+	   "g d" 'elpy-goto-definition
+	   "g p" 'xref-pop-marker-stack))
 
 (provide 'init-elpy)
 ;;; init-elpy.el ends here

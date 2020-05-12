@@ -1,11 +1,11 @@
-;;; init-general.el ---   -*- lexical-binding: t -*-
+:;;; init-color-rg.el --- configures color-rg -*- lexical-binding: t -*-
 
 ;; Author: Alex de Wit
 ;; Maintainer: Alex de Wit
-;; Version: 0
-;; Package-Requires: ()
-;; Homepage: none
-;; Keywords: general, keybindings
+;; Version: 
+;; Package-Requires: (dependencies)
+;; Homepage: 
+;; Keywords: 
 
 
 ;; This file is not part of GNU Emacs
@@ -26,14 +26,16 @@
 
 ;;; Commentary:
 
-;; This file initializes general.el for my Emacs 
+;; This file loads and configures color-rg
 
 ;;; Code:
 
-(use-package general
-  :config
-  (general-create-definer leader-def :prefix "SPC"))
+(use-package color-rg
+  :load-path "~/.emacs.d/site-elisp/color-rg"
+  :general
+  (leader-def 'normal "/ /" 'color-rg-search-input-in-project'
+	      "/ s" 'color-rg-search-symbol-in-project))
+  
+(provide 'init-color-rg)
 
-(provide 'init-general)
-
-;;; init-general.el ends here
+;;; init-color-rg.el ends here

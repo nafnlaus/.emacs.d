@@ -41,7 +41,9 @@
 	evil-shift-round nil
 	evil-want-C-u-scroll t)
   :config
-  (evil-mode))
+  (evil-mode)
+  (add-to-list 'evil-emacs-state-modes 'color-rg-mode))
+
 
 (use-package evil-collection
   :after evil
