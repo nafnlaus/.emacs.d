@@ -65,5 +65,11 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
+(use-package evil-snipe
+  :config
+  (evil-snipe-mode 1)
+  (evil-snipe-override-mode 1))
+
+
 (provide 'init-evil)
 ;;; init-evil.el ends here

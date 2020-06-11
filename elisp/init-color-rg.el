@@ -33,8 +33,7 @@
 (use-package color-rg
   :load-path "~/.emacs.d/site-elisp/color-rg"
   :general
-  (leader-def 'normal "/ /" 'color-rg-search-input-in-project'
-	      "/ s" 'color-rg-search-symbol-in-project))
+  (leader-def 'normal "/" 'color-rg-search-input-in-project))
   
 (provide 'init-color-rg)
 

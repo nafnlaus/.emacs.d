@@ -33,6 +33,7 @@
 (use-package elpy
   :init (elpy-enable)
   :config (setq elpy-rpc-python-command "python3")
+  (setq python-shell-interpreter "python3")
   :general
   ('normal elpy-mode-map
 	   "g d" 'elpy-goto-definition

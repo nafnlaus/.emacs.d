@@ -37,11 +37,11 @@
       (add-to-list 'load-path base))
     (dolist (f (directory-files base))
       (let ((name (concat base "/" f)))
-        (when (and (file-directory-p name)
-                   (not (equal f ".."))
-                   (not (equal f ".")))
-          (unless (member base load-path)
-            (add-to-list 'load-path name)))))))
+	(when (and (file-directory-p name)
+		   (not (equal f ".."))
+		   (not (equal f ".")))
+	  (unless (member base load-path)
+	    (add-to-list 'load-path name)))))))
 
 (update-to-load-path (expand-file-name "elisp" user-emacs-directory))
 
@@ -58,6 +58,7 @@
 
 ;; keybinding packages
 (require 'init-evil)
+(require 'init-general)
 (require 'init-eyebrowse)
 
 ;; misc

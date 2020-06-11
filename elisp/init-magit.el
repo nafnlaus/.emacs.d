@@ -29,14 +29,12 @@
 ;;
 ;;; Code:
 
-(use-package magit
-  :defer t)
+(use-package magit)
 
 (use-package evil-magit
   :after evil magit)
 
 (use-package forge
-  :defer t
   :after magit)
 
 (provide 'init-magit)
