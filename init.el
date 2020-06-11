@@ -77,6 +77,7 @@
 ;; (require 'init-quickrun)
 
 ;; major modes
+(require 'init-org)
 (require 'init-cc-mode)
 (require 'init-elpy)
 (require 'init-jedi)
