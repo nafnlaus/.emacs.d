@@ -1,9 +1,9 @@
-;;; init-elpy.el --- summary -*- lexical-binding: t -*-
+:;;; init-projectile.el ---  -*- lexical-binding: t -*-
 
 ;; Author: Alex de Wit
 ;; Maintainer: Alex de Wit
 ;; Version: 
-;; Package-Requires: (elpy)
+;; Package-Requires: ()
 ;; Homepage: 
 ;; Keywords: 
 
@@ -26,22 +26,14 @@
 
 ;;; Commentary:
 
-;; This file configures elpy
+;; This file initializes projectile.
 
 ;;; Code:
-(use-package pyvenv
-  :general
-  (leader-def 'normal "p v a" 'pyvenv-activate)
-  (leader-def 'normal "p v d" 'pyvenv-deactivate))
 
-(use-package elpy
-  :init (elpy-enable)
-  :config (setq elpy-rpc-python-command "python3")
-  (setq python-shell-interpreter "python3")
+(use-package projectile
   :general
-  ('normal elpy-mode-map
-	   "g d" 'elpy-goto-definition
-	   "g p" 'xref-pop-marker-stack))
+  (leader-def 'normal python-mode-map "p t" 'projectile-test-project))
 
-(provide 'init-elpy)
-;;; init-elpy.el ends here
+(provide 'init-projectile)
+
+;;; init-projectile.el ends here

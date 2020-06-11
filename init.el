@@ -70,6 +70,7 @@
 (require 'init-mu4e)
 
 ;; programming utility packages
+(require 'init-projectile)
 (require 'init-company)
 (require 'init-flycheck)
 (require 'init-smartparens)
