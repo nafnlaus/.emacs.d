@@ -62,6 +62,7 @@
 (require 'init-eyebrowse)
 
 ;; misc
+(require 'init-tramp)
 (require 'init-dired)
 (require 'init-shell)
 (require 'init-ivy)
@@ -73,7 +74,7 @@
 (require 'init-projectile)
 (require 'init-company)
 (require 'init-flycheck)
-(require 'init-smartparens)
+;; (require 'init-smartparens)
 (require 'init-yasnip)
 (require 'init-color-rg)
 ;; (require 'init-quickrun)
@@ -83,6 +84,9 @@
 (require 'init-cc-mode)
 (require 'init-elpy)
 (require 'init-jedi)
+(require 'init-ein)
+(require 'init-racket)
+
 
 ;; custom keybinding maps
 ;; (require 'init-leader-maps)

@@ -30,6 +30,12 @@
 ;;
 ;;; Code:
 
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode)
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+
 (use-package evil
   :init ;; tweak evil's configuration before loading it
   (setq evil-want-keybinding nil
@@ -42,7 +48,9 @@
 	evil-want-C-u-scroll t)
   :config
   (evil-mode)
-  (add-to-list 'evil-emacs-state-modes 'color-rg-mode))
+  (add-to-list 'evil-emacs-state-modes 'color-rg-mode)
+;;  (global-undo-tree-mode)
+  (evil-set-undo-system 'undo-tree))
 
 
 (use-package evil-collection

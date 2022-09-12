@@ -31,6 +31,8 @@
 
 ;; single space after periods like sane people, please!
 (setq-default sentence-end-double-space nil)
+;; tabs are 4 spaces
+(setq-default tab-width 4)
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 

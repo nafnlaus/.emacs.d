@@ -32,8 +32,7 @@
 (use-package shell-here
   :bind ("M-`" . shell-here)
   :config
-  (if (eq 'system-type "gnu/linux")
-      (setq explicit-shell-file-name "/bin/bash")))
+      (setq explicit-shell-file-name "/bin/bash"))
 
 ;; configure multiterm/multishell
 ;; write a function that renames shell buffer upon opening it so that names

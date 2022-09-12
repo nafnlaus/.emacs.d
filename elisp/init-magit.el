@@ -29,13 +29,22 @@
 ;;
 ;;; Code:
 
-(use-package magit)
 
-(use-package evil-magit
-  :after evil magit)
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
+
+(use-package magit
+  :demand t)
 
 (use-package forge
-  :after magit)
+  :after magit
+  :config (add-to-list 'forge-alist
+               '("uwgit"
+                 "git.uwaterloo.ca/api/v4"
+                 "git.uwaterloo.ca"
+                 forge-gitlab-repository)))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here

@@ -42,6 +42,7 @@
       delete-old-versions t  ; Automatically delete excess backups
       kept-new-versions 20   ; how many of the newest versions to keep
       kept-old-versions 5    ; and how many of the old
+      tramp-auto-save-directory "~/emacs/tramp-autosave"
       )
 
 ;; Load the newest version of a file
