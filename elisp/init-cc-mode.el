@@ -34,7 +34,7 @@
   :init
   (setq tab-width        4
         c-basic-offset   4
-        indent-tabs-mode t)
+        indent-tabs-mode nil)
   (c-set-offset 'comment-intro 0)
   (c-set-offset 'innamespace 0)
   (c-set-offset 'case-label '+)
